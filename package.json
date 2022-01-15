@@ -1,0 +1,57 @@
+{
+  "name": "nextjs-starter",
+  "description": "A TypeScript starter for Next.js",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Felix Lee",
+  "license": "MIT",
+  "keywords": [
+    "reactjs",
+    "nextjs",
+    "typescript"
+  ],
+  "scripts": {
+    "dev": "PORT=4001 next",
+    "build": "next build",
+    "start": "PORT=4001 next start",
+    "type-check": "tsc",
+    "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
+    "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write",
+    "postinstall": "husky install",
+    "commit": "cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "classnames": "^2.3.1",
+    "husky": "7.0.4",
+    "next": "12.0.8",
+    "qs": "^6.10.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "16.0.2",
+    "@commitlint/config-conventional": "16.0.0",
+    "@types/node": "17.0.8",
+    "@types/qs": "^6.9.7",
+    "@types/react": "17.0.38",
+    "@types/react-dom": "17.0.11",
+    "@typescript-eslint/eslint-plugin": "5.9.1",
+    "@typescript-eslint/parser": "5.9.1",
+    "commitizen": "4.2.4",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "8.6.0",
+    "eslint-config-next": "12.0.8",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-import-resolver-typescript": "2.5.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "lint-staged": "12.1.7",
+    "prettier": "2.5.1",
+    "sass": "1.48.0",
+    "typescript": "4.5.4"
+  }
+}

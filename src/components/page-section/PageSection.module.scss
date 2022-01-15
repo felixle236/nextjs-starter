@@ -1,0 +1,11 @@
+.section {
+  padding: 30px 0;
+
+  &.alternate {
+    background: $color-page-alternate;
+  }
+
+  &:last-child {
+    flex: 1;
+  }
+}
