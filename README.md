@@ -5,11 +5,9 @@
 - ⚡️ Next.js 12
 - ⚛️ React 17
 - ⛑ TypeScript
-- 📏 ESLint — Find and fix problems in your code
+- 📏 ESLint — Find problems in your code
 - 💖 Prettier — Code Formatter for consistent style
 - 🐶 Husky — For running scripts before committing
-- 📄 Commitizen — To define a standard way of committing rules
-- 🚓 Commitlint — Make sure your commit messages follow the convention
 - 🖌 Renovate — Keep your dependencies up to date
 - 🚫 lint-staged — To run ESLint and Prettier against staged Git files
 - 👷 PR Workflow — Run Type Check & Linters on all Pull Requests
@@ -34,7 +32,11 @@ To start the project locally, run:
 npm run dev
 ```
 
-Open `http://localhost:4001` with your browser to see the result.
+Open `http://localhost:3000` with your browser to see the result. To change the port:
+
+```bash
+PORT=4000 npm run dev
+```
 
 ### Requirements
 

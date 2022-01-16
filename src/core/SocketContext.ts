@@ -16,6 +16,7 @@ export function useSocket(wsUrl: string, namespace?: string, token?: string) {
 
     // should only run once and not on every re-render,
     // so pass an empty array
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return socket;

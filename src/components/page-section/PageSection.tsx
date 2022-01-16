@@ -7,6 +7,8 @@ interface Props {
   alternate?: boolean;
 }
 
-const Section: FunctionComponent<Props> = ({ children, alternate }) => <section className={classNames(styles.section, { [styles.alternate]: alternate })}>{children}</section>;
+const Section: FunctionComponent<Props> = ({ children, alternate }) => (
+  <section className={classNames(styles.section, { [styles.alternate]: alternate })}>{children}</section>
+);
 
 export default Section;

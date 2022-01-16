@@ -1,6 +1,19 @@
 export function convertMonthToWord(month: number) {
   if (month >= 1 && month <= 12) {
-    const words = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const words = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
     return words[month - 1];
   }
   return '';

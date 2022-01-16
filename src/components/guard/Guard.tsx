@@ -18,7 +18,8 @@ function checkGuardAccess(guard?: AuthGuard, auth?: Auth) {
       (guard.disallowAuth && auth) ||
       (guard.allowAuth &&
         auth &&
-        ((guard.roleIds?.length && !guard.roleIds.includes(auth.roleId as RoleId)) || (guard.excludeRoleIds?.length && guard.excludeRoleIds.includes(auth.roleId as RoleId)))))
+        ((guard.roleIds?.length && !guard.roleIds.includes(auth.roleId as RoleId)) ||
+          (guard.excludeRoleIds?.length && guard.excludeRoleIds.includes(auth.roleId as RoleId)))))
   ) {
     return false;
   }
@@ -36,7 +37,7 @@ const Guard: FunctionComponent<Props> = ({ children, guard }) => {
       router.push(redirect);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [guard]);
+  }, [children]);
 
   const allowAccess = checkGuardAccess(guard, auth);
   return <>{allowAccess ? children : 'Loading...'}</>;

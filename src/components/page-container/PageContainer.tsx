@@ -7,6 +7,8 @@ interface Props {
   className?: string;
 }
 
-const PageContainer: FunctionComponent<Props> = ({ children, className }) => <div className={classNames(styles.main, className)}>{children}</div>;
+const PageContainer: FunctionComponent<Props> = ({ children, className }) => (
+  <div className={classNames(styles.main, className)}>{children}</div>
+);
 
 export default PageContainer;
