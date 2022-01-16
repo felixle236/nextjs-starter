@@ -1,5 +1,5 @@
-import Navigation from '@components/navigation/Navigation';
 import { FunctionComponent } from 'react';
+import Navigation from '@components/navigation/Navigation';
 import styles from './Footer.module.scss';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

@@ -1,5 +1,5 @@
-import { FunctionComponent, ReactNode } from 'react';
 import classNames from 'classnames';
+import { FunctionComponent, ReactNode } from 'react';
 import styles from './PageSection.module.scss';
 
 interface Props {

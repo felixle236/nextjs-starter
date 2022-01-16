@@ -19,6 +19,22 @@
         "jsx": "never"
       }
     ],
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "never",
+        "alphabetize": { "order": "asc", "caseInsensitive": true },
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "index",
+          "sibling",
+          "parent",
+          "object"
+        ]
+      }
+    ],
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
@@ -36,9 +52,9 @@
       "extends": ["plugin:@typescript-eslint/recommended", "prettier"],
       "rules": {
         "curly": "error",
+        "no-use-before-define": [0],
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
-        "no-use-before-define": [0],
         "@typescript-eslint/no-use-before-define": [1],
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-var-requires": "off"

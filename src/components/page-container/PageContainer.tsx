@@ -1,6 +1,6 @@
+import classNames from 'classnames';
 import { ReactNode, FunctionComponent } from 'react';
 import styles from './PageContainer.module.scss';
-import classNames from 'classnames';
 
 interface Props {
   children?: ReactNode;

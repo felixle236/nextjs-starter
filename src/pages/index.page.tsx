@@ -1,32 +1,27 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from './Home.module.scss';
-import { LocaleQueryKey } from '@constants/Locale';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useAuthContext } from '@core/AuthContext';
-import { RoleId } from '@app/enums/RoleId';
-import clientService from '@app/services/ClientService';
-import managerService from '@app/services/ManagerService';
+import { getProfile } from '@utils/Auth';
+import styles from './Home.module.scss';
 
 export default function Home() {
-  const router = useRouter();
+  const { locale } = useRouter();
   const { token, auth } = useAuthContext();
 
   useEffect(() => {
     // Test
     async function test() {
       let profile;
-      if (auth.roleId === RoleId.Client) {
-        profile = clientService.getProfile(token);
-      } else {
-        profile = await managerService.getProfile(token);
+      if (token && auth) {
+        profile = await getProfile(token, auth.roleId, locale);
       }
       console.log('test', profile);
     }
     test();
-  });
+  }, [token, auth, locale]);
 
   return (
     <div className={styles.container}>
@@ -47,22 +42,12 @@ export default function Home() {
         </p>
 
         <p>
-          <Link
-            href={{
-              pathname: '/about',
-              query: { [LocaleQueryKey]: router.query[LocaleQueryKey] },
-            }}
-          >
+          <Link href="/about">
             <a>About Us</a>
           </Link>
         </p>
         <p>
-          <Link
-            href={{
-              pathname: '/protected',
-              query: { [LocaleQueryKey]: router.query[LocaleQueryKey] },
-            }}
-          >
+          <Link href="/protected">
             <a>Protected Page</a>
           </Link>
         </p>
@@ -71,7 +56,7 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <a href="https://vercel.com?utm_source=typescript-nextjs-starter" target="_blank" rel="noopener noreferrer">
-          Powered by{` `}
+          Powered by NextJS
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>

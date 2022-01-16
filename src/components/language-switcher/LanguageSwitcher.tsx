@@ -1,22 +1,24 @@
-import { FunctionComponent } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { usePageContext } from '@core/PageContext';
-import { LocaleDefault, Locales } from '@constants/Locale';
+import { FunctionComponent } from 'react';
 
-interface Props {
-  onClick?: () => void;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface Props {}
 
-const LanguageSwitcher: FunctionComponent<Props> = ({ onClick }) => {
+const LanguageSwitcher: FunctionComponent<Props> = () => {
   const router = useRouter();
-  const pageContext = usePageContext();
-  const { pathname, asPath } = router;
-  // pageContext.setLocale(LocaleDefault);
+
   return (
     <>
-      {Object.values(Locales).map((locale) => (
-        <button key={locale.code}>{locale.name}</button>
-      ))}
+      <Link href={router.pathname} locale="en" passHref>
+        <a>English</a>
+      </Link>
+      <Link href={router.pathname} locale="vi" passHref>
+        <a>Việt Nam</a>
+      </Link>
+      <Link href={router.pathname} locale="ja" passHref>
+        <a>日本</a>
+      </Link>
     </>
   );
 };

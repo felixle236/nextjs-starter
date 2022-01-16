@@ -1,6 +1,6 @@
-import { FunctionComponent } from 'react';
-import { useRouter } from 'next/router';
 import classNames from 'classnames';
+import { useRouter } from 'next/router';
+import { FunctionComponent } from 'react';
 
 interface Props {
   link: { label: string; href: string };

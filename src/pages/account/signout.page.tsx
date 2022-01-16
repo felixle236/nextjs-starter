@@ -1,14 +1,17 @@
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { AuthGuard } from '@common/AuthGuard';
 import BlankLayout from '@components/layout/blank/BlankLayout';
-import { AuthKey } from '@constants/Common';
 import { Routes } from '@constants/Routes';
-import { setCookie } from '@utils/Cookie';
-import { useEffect } from 'react';
+import { useAuthContext } from '@core/AuthContext';
 
 export default function SignOut() {
+  const router = useRouter();
+  const { clearUserAuthenticated } = useAuthContext();
+
   useEffect(() => {
-    setCookie(AuthKey, '', -1);
-    location.href = Routes.Index;
+    clearUserAuthenticated();
+    router.push(Routes.Index);
   });
 
   return <>Loading...</>;

@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from 'react';
-import Header from '../../header/Header';
-import Footer from '../../footer/Footer';
 import styles from './DefaultLayout.module.scss';
+import Footer from '../../footer/Footer';
+import Header from '../../header/Header';
 
 interface Props {
   children?: ReactNode;

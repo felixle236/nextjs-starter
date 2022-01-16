@@ -1,11 +1,11 @@
-import { useState, FunctionComponent } from 'react';
 import classNames from 'classnames';
-import styles from './Header.module.scss';
-import LanguageSwitcher from '@components/language-switcher/LanguageSwitcher';
-import Hamburger from '@components/navigation/Hamburger';
-import Logo from '@components/logo/Logo';
-import Navigation from '@components/navigation/Navigation';
 import Link from 'next/link';
+import { useState, FunctionComponent } from 'react';
+import LanguageSwitcher from '@components/language-switcher/LanguageSwitcher';
+import Logo from '@components/logo/Logo';
+import Hamburger from '@components/navigation/Hamburger';
+import Navigation from '@components/navigation/Navigation';
+import styles from './Header.module.scss';
 
 const Header: FunctionComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +23,7 @@ const Header: FunctionComponent = () => {
       <nav>
         <Navigation activeClassName={styles.active} links={[]} onClick={close} />
 
-        <LanguageSwitcher onClick={close} />
+        <LanguageSwitcher />
       </nav>
 
       <Hamburger isOpen={isOpen} onClick={toggle} className={styles.hamburger} />

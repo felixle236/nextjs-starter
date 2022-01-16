@@ -1,6 +1,6 @@
+import classNames from 'classnames';
 import { useRouter } from 'next/router';
 import { useEffect, useState, FunctionComponent } from 'react';
-import classNames from 'classnames';
 import styles from './PageLoading.module.scss';
 
 const PageLoading: FunctionComponent = () => {

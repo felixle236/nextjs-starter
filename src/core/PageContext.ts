@@ -1,10 +1,7 @@
-import { Locale } from '@common/Locale';
-import { createContext, Dispatch, SetStateAction, useContext } from 'react';
+import { createContext, useContext } from 'react';
 
-export interface PageContextValue {
-  locale?: Locale;
-  setLocale: Dispatch<SetStateAction<Locale | undefined>>;
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface PageContextValue {}
 
 const PageContext = createContext({} as PageContextValue);
 PageContext.displayName = 'PageContext';

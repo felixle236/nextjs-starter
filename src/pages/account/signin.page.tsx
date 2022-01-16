@@ -1,12 +1,14 @@
+import { useRouter } from 'next/router';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import authService from '@app/services/AuthService';
 import { AuthGuard } from '@common/AuthGuard';
-import BlankLayout from '@components/layout/blank/BlankLayout';
-import { AuthKey } from '@constants/Common';
 import { Routes } from '@constants/Routes';
-import { setCookie } from '@utils/Cookie';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { useAuthContext } from '@core/AuthContext';
+import { getProfile } from '@utils/Auth';
 
 export default function SignIn() {
+  const router = useRouter();
+  const { setUserAuthenticated, clearUserAuthenticated } = useAuthContext();
   const [inputs, setInputs] = useState({
     email: '',
     password: '',
@@ -20,11 +22,14 @@ export default function SignIn() {
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
     try {
-      const token = await authService.login(inputs.email, inputs.password);
-      setCookie(AuthKey, token, 24 * 60 * 60);
-      location.href = Routes.Index;
+      const result = await authService.login(inputs.email, inputs.password, { locale: router.locale });
+      const auth = { userId: result.userId, roleId: result.roleId };
+      const profile = await getProfile(result.token, result.roleId, router.locale);
+
+      setUserAuthenticated({ token: result.token, auth, profile });
+      router.push((router.query.redirect as string) || Routes.Index);
     } catch ({ message }) {
-      setCookie(AuthKey, '', -1);
+      clearUserAuthenticated();
       alert(message);
     }
   }
@@ -45,8 +50,6 @@ export default function SignIn() {
     </>
   );
 }
-
-SignIn.layout = BlankLayout;
 
 SignIn.guard = {
   disallowAuth: true,

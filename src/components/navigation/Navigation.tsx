@@ -1,5 +1,5 @@
-import NavigationLink from '@components/link/NavigationLink';
 import { FunctionComponent } from 'react';
+import NavigationLink from '@components/link/NavigationLink';
 
 interface Props {
   links: { label: string; href: string }[];
