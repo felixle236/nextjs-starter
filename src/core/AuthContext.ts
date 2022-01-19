@@ -4,13 +4,11 @@ import { Client } from '@app/models/Client';
 import { Manager } from '@app/models/Manager';
 
 export interface AuthContextValue {
-  token?: string;
   auth?: Auth;
   profile?: Client | Manager;
-  setToken: Dispatch<SetStateAction<string | undefined>>;
   setAuth: Dispatch<SetStateAction<Auth | undefined>>;
   setProfile: Dispatch<SetStateAction<Client | Manager | undefined>>;
-  setUserAuthenticated: Dispatch<{ token: string; auth: Auth; profile: Client | Manager }>;
+  setUserAuthenticated: Dispatch<{ auth: Auth; profile: Client | Manager }>;
   clearUserAuthenticated: Dispatch<void>;
 }
 

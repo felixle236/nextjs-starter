@@ -9,19 +9,19 @@ import styles from './Home.module.scss';
 
 export default function Home() {
   const { locale } = useRouter();
-  const { token, auth } = useAuthContext();
+  const { auth } = useAuthContext();
 
   useEffect(() => {
     // Test
     async function test() {
       let profile;
-      if (token && auth) {
-        profile = await getProfile(token, auth.roleId, locale);
+      if (auth) {
+        profile = await getProfile(auth.token, auth.roleId, locale);
       }
       console.log('test', profile);
     }
     test();
-  }, [token, auth, locale]);
+  }, [auth, locale]);
 
   return (
     <div className={styles.container}>

@@ -15,25 +15,22 @@ import { useSocket } from '@core/SocketContext';
 import { checkUserAuthenticated } from '@utils/Auth';
 import { setCookie } from '@utils/Cookie';
 
-type AppProps<P = { token?: string; auth?: Auth; profile?: Client | Manager }> = {
+type AppProps<P = { auth?: Auth; profile?: Client | Manager }> = {
   pageProps: P;
   Component: NextComponentType<NextPageContext, any, P> & { layout?: FunctionComponent; guard?: AuthGuard };
 } & Omit<NextAppProps<P>, 'pageProps'>;
 
 function App({ Component, pageProps }: AppProps) {
-  const [token, setToken] = useState<string | undefined>(pageProps.token);
   const [auth, setAuth] = useState<Auth | undefined>(pageProps.auth);
   const [profile, setProfile] = useState<Client | Manager | undefined>(pageProps.profile);
 
-  const setUserAuthenticated = (data: { token: string; auth: Auth; profile: Client | Manager }) => {
-    setCookie(AuthKey, data.token, 24 * 60 * 60);
-    setToken(data.token);
+  const setUserAuthenticated = (data: { auth: Auth; profile: Client | Manager }) => {
+    setCookie(AuthKey, data.auth.token, 24 * 60 * 60);
     setAuth(data.auth);
     setProfile(data.profile);
   };
   const clearUserAuthenticated = () => {
     setCookie(AuthKey, '', -1);
-    setToken(undefined);
     setAuth(undefined);
     setProfile(undefined);
   };
@@ -57,7 +54,7 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <PageContext.Provider value={{}}>
-      <AuthContext.Provider value={{ token, auth, profile, setAuth, setProfile, setToken, setUserAuthenticated, clearUserAuthenticated }}>
+      <AuthContext.Provider value={{ auth, profile, setAuth, setProfile, setUserAuthenticated, clearUserAuthenticated }}>
         <PageLoading />
         <Guard guard={Component.guard}>
           <Layout layout={Component.layout}>

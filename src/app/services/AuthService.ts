@@ -1,5 +1,5 @@
 import { DataResponse } from '@app/common/Pagination';
-import { Auth, UserLogin } from '@app/models/Auth';
+import { Auth } from '@app/models/Auth';
 import { Api, ApiOptions } from '@utils/Api';
 
 const authService = {
@@ -9,7 +9,7 @@ const authService = {
   },
 
   login: async (email: string, password: string, options?: ApiOptions) => {
-    const { data } = await Api.post<DataResponse<UserLogin>>('/api/v1/auths/login', { email, password }, options);
+    const { data } = await Api.post<DataResponse<Auth>>('/api/v1/auths/login', { email, password }, options);
     return data;
   },
 };

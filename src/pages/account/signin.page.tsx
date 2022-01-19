@@ -23,10 +23,10 @@ export default function SignIn() {
     event.preventDefault();
     try {
       const result = await authService.login(inputs.email, inputs.password, { locale: router.locale });
-      const auth = { userId: result.userId, roleId: result.roleId };
+      const auth = { token: result.token, userId: result.userId, roleId: result.roleId };
       const profile = await getProfile(result.token, result.roleId, router.locale);
 
-      setUserAuthenticated({ token: result.token, auth, profile });
+      setUserAuthenticated({ auth, profile });
       router.push((router.query.redirect as string) || Routes.Index);
     } catch ({ message }) {
       clearUserAuthenticated();

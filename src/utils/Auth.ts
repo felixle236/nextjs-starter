@@ -19,10 +19,11 @@ export async function checkUserAuthenticated(ctx: NextPageContext) {
   if (token) {
     try {
       auth = await authService.authenticate({ token });
+      auth.token = token;
       profile = await getProfile(token, auth.roleId);
     } catch (error) {
       ctx.res?.setHeader('set-cookie', 'token=; max-age=0');
     }
   }
-  return { token, auth, profile };
+  return { auth, profile };
 }
