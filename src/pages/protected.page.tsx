@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
-import { AuthGuard } from '@common/AuthGuard';
+import { AuthGuard } from '@app/common/AuthGuard';
 import { Routes } from '@constants/Routes';
-import { useAuthContext } from '@core/AuthContext';
+import { useAuthContext } from '@contexts/AuthContext';
 
 export default function Protected() {
   const router = useRouter();

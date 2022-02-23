@@ -1,14 +1,14 @@
 import { createContext, Dispatch, SetStateAction, useContext } from 'react';
-import { Auth } from '@app/models/Auth';
-import { Client } from '@app/models/Client';
-import { Manager } from '@app/models/Manager';
+import { UserAuth } from '@app/models/auth/UserAuth';
+import { Client } from '@app/models/user/Client';
+import { Manager } from '@app/models/user/Manager';
 
 export interface AuthContextValue {
-  auth?: Auth;
+  auth?: UserAuth;
   profile?: Client | Manager;
-  setAuth: Dispatch<SetStateAction<Auth | undefined>>;
+  setAuth: Dispatch<SetStateAction<UserAuth | undefined>>;
   setProfile: Dispatch<SetStateAction<Client | Manager | undefined>>;
-  setUserAuthenticated: Dispatch<{ auth: Auth; profile: Client | Manager }>;
+  setUserAuthenticated: Dispatch<{ auth: UserAuth; profile: Client | Manager }>;
   clearUserAuthenticated: Dispatch<void>;
 }
 

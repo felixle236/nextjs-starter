@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { AuthGuard } from '@app/common/AuthGuard';
 import authService from '@app/services/AuthService';
-import { AuthGuard } from '@common/AuthGuard';
 import { Routes } from '@constants/Routes';
-import { useAuthContext } from '@core/AuthContext';
+import { useAuthContext } from '@contexts/AuthContext';
 import { getProfile } from '@utils/Auth';
 
 export default function SignIn() {

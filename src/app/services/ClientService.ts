@@ -1,5 +1,5 @@
-import { DataResponse } from '@app/common/Pagination';
-import { Client } from '@app/models/Client';
+import { DataResponse } from '@app/common/Response';
+import { Client } from '@app/models/user/Client';
 import { Api, ApiOptions } from '@utils/Api';
 
 const clientService = {

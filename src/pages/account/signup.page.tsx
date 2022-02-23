@@ -1,4 +1,4 @@
-import { AuthGuard } from '@common/AuthGuard';
+import { AuthGuard } from '@app/common/AuthGuard';
 import BlankLayout from '@components/layout/blank/BlankLayout';
 import { Routes } from '@constants/Routes';
 

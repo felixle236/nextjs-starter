@@ -1,17 +1,17 @@
 import { useRouter } from 'next/router';
 import { FunctionComponent, ReactNode, useEffect } from 'react';
+import { AuthGuard } from '@app/common/AuthGuard';
 import { RoleId } from '@app/enums/RoleId';
-import { Auth } from '@app/models/Auth';
-import { AuthGuard } from '@common/AuthGuard';
+import { UserAuth } from '@app/models/auth/UserAuth';
 import { Routes } from '@constants/Routes';
-import { useAuthContext } from '@core/AuthContext';
+import { useAuthContext } from '@contexts/AuthContext';
 
 interface Props {
   children: ReactNode;
   guard?: AuthGuard;
 }
 
-function checkGuardAccess(guard?: AuthGuard, auth?: Auth) {
+function checkGuardAccess(guard?: AuthGuard, auth?: UserAuth) {
   if (
     guard &&
     ((guard.allowAuth && !auth) ||

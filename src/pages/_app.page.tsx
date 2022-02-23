@@ -1,30 +1,30 @@
 import { NextComponentType, NextPageContext } from 'next';
 import { AppContext, AppProps as NextAppProps } from 'next/app';
 import { FunctionComponent, useEffect, useState } from 'react';
-import { Auth } from '@app/models/Auth';
-import { Client } from '@app/models/Client';
-import { Manager } from '@app/models/Manager';
-import { AuthGuard } from '@common/AuthGuard';
+import { AuthGuard } from '@app/common/AuthGuard';
+import { UserAuth } from '@app/models/auth/UserAuth';
+import { Client } from '@app/models/user/Client';
+import { Manager } from '@app/models/user/Manager';
 import Guard from '@components/guard/Guard';
 import Layout from '@components/layout/Layout';
 import PageLoading from '@components/page-loading/PageLoading';
 import { AuthKey } from '@constants/Common';
-import AuthContext from '@core/AuthContext';
-import PageContext from '@core/PageContext';
-import { useSocket } from '@core/SocketContext';
+import AuthContext from '@contexts/AuthContext';
+import PageContext from '@contexts/PageContext';
+import { useSocket } from '@contexts/SocketContext';
 import { checkUserAuthenticated } from '@utils/Auth';
 import { setCookie } from '@utils/Cookie';
 
-type AppProps<P = { auth?: Auth; profile?: Client | Manager }> = {
+type AppProps<P = { auth?: UserAuth; profile?: Client | Manager }> = {
   pageProps: P;
   Component: NextComponentType<NextPageContext, any, P> & { layout?: FunctionComponent; guard?: AuthGuard };
 } & Omit<NextAppProps<P>, 'pageProps'>;
 
 function App({ Component, pageProps }: AppProps) {
-  const [auth, setAuth] = useState<Auth | undefined>(pageProps.auth);
+  const [auth, setAuth] = useState<UserAuth | undefined>(pageProps.auth);
   const [profile, setProfile] = useState<Client | Manager | undefined>(pageProps.profile);
 
-  const setUserAuthenticated = (data: { auth: Auth; profile: Client | Manager }) => {
+  const setUserAuthenticated = (data: { auth: UserAuth; profile: Client | Manager }) => {
     setCookie(AuthKey, data.auth.token, 24 * 60 * 60);
     setAuth(data.auth);
     setProfile(data.profile);
@@ -35,7 +35,7 @@ function App({ Component, pageProps }: AppProps) {
     setProfile(undefined);
   };
 
-  const socket = useSocket(process.env.NEXT_PUBLIC_WS_URL ?? '', 'tracking');
+  const socket = useSocket(process.env.NEXT_PUBLIC_WS_URL ?? '', 'test');
   useEffect(() => {
     if (socket) {
       socket.on('connect', () => {

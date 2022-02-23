@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { useAuthContext } from '@core/AuthContext';
+import { useAuthContext } from '@contexts/AuthContext';
 import { getProfile } from '@utils/Auth';
 import styles from './Home.module.scss';
 

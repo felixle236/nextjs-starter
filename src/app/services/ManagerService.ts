@@ -1,5 +1,5 @@
-import { DataResponse } from '@app/common/Pagination';
-import { Manager } from '@app/models/Manager';
+import { DataResponse } from '@app/common/Response';
+import { Manager } from '@app/models/user/Manager';
 import { Api, ApiOptions } from '@utils/Api';
 
 const managerService = {
