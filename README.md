@@ -41,3 +41,35 @@ PORT=4000 npm run dev
 ### Requirements
 
 - Node.js >= 12.22.0
+
+### Integrate Ant Design
+
+Install Ant Design core and its icon set with the following command:
+```
+npm install antd @ant-design/icons --save
+```
+
+Manually import the antd.css file at the very top of your pages/_app.page.tsx file:
+```
+import 'antd/dist/antd.css';
+```
+
+For example:
+```
+import { Button, Space, DatePicker, Card } from 'antd';
+import { CiCircleFilled } from '@ant-design/icons';
+
+export default function Home() {
+  const onChange = () => {};
+  return (
+    <div style={{ padding: 100 }}>
+      <Space direction="vertical">
+        <Button type="primary">Primary Button</Button>
+        <Button type="ghost">Ghost Button</Button>
+        <DatePicker onChange={onChange} />
+        <CiCircleFilled />
+      </Space>
+    </div>
+  );
+}
+```
