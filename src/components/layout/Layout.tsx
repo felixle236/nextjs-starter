@@ -3,7 +3,7 @@ import DefaultLayout from './default/DefaultLayout';
 
 interface Props {
   children?: ReactNode;
-  layout?: FunctionComponent;
+  layout?: FunctionComponent<Props>;
 }
 
 const Layout: FunctionComponent<Props> = ({ children, layout: LayoutComponent }) => (
